@@ -1,0 +1,20 @@
+<h1>Calendar</h1>
+
+<div id="calendar"></div>
+
+
+
+  <script>
+    $(function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new Calendar(calendarEl, {
+        header: {
+          left: 'prev, next',
+          right: 'dayGridMonth, listMonth'
+        },
+        plugins: [DayGridPlugin, ListPlugin],
+        defaultView: 'dayGridMonth'
+      });
+      calendar.render();
+    })
+  </script>
