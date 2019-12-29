@@ -36,3 +36,12 @@ database.yml
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
+dump.rdb
+sidekiq.log
