@@ -1,6 +1,1 @@
-<%if @events.first.present?%>
-  <%= render partial: 'events', locals: {events: @events} %>
-<%else%>
-  <h3>No events</h3>
-  <%= link_to "Add Event", new_event_path%>
-<%end%>
+<%= render partial: 'events', locals: {events: @events} %>
