@@ -11,6 +11,10 @@
 #  updated_at  :datetime         not null
 #  place_id    :integer
 #
+# Indexes
+#
+#  index_events_on_place_id  (place_id)
+#
 
 require 'test_helper'
 

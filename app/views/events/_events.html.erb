@@ -1,39 +1,41 @@
-
-<hr>
-<%= form_for :search, url: events_path, method: "GET" do |form|%>
-<!--  <#%= form.label :title%>
-  <#%= form.text_field :title, value: ""%>
--->
+<br>
+<%= form_for :search, url: events_path,  method: "GET" do |form|%>
   
-
-  <%= form.label :start_date%>
-  <%= form.date_field :start_date, value: ""%>
-  <br>
-  <%= form.label :start_date%>
-  <%= form.date_field :start_date, value: ""%>
-  <br>
-
-
-  <%= form.submit "Search"%>
+  <fieldset>
+    <legend>Ricerca evento</legend>
+    <%= form.label :start_date%>
+    <%= form.date_field :start_date, value: ""%>
+    <br>
+    <%= form.label :start_date%>
+    <%= form.date_field :start_date, value: ""%>
+    <br>
+    <%= form.submit "Search"%>
+  </fieldset>
 <%end%>
-<hr>
+<br>
 
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
+      <th>City</th>
       <th>Start Date</th>
       <th>End Date</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% events.each do |event|%>
       <tr>
-        <td><%= event.title%></td>
+        <td><%=link_to event.title, event_path(event)%></td>
         <td><%= event.description%></td>
+        <td><%= event.place.name%></td>
         <td><%= event.start_date%></td>
         <td><%= event.end_date%></td>
+        <td><%= link_to 'Edit', edit_event_path(event)%></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
     <%end%>
   </tbody>

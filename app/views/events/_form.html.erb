@@ -11,5 +11,10 @@
   <%= form.label :end_date%>
   <%= form.date_field :end_date%>
   <br>
+
+  <%= form.collection_select(:place_id, Place.all, :id, :name)%>
+  <br>
+  <br>
+
   <%= form.submit%>
 <%end%>

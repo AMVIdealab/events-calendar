@@ -16,7 +16,42 @@
  @import "@fullcalendar/core/main.css";
  @import "@fullcalendar/daygrid/main.css";
  @import "@fullcalendar/list/main.css";
- 
+
+
+  /*form*/
+  input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+  input[type=date]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  
+  textarea{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+/*form*/
+
+/*Table*/
+  table {
+    border-collapse: collapse;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+  }
+
+
 ul {
   list-style-type: none;
   margin: 0;
