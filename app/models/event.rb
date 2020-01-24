@@ -9,18 +9,12 @@
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  place_id    :integer
-#
-# Indexes
-#
-#  index_events_on_place_id  (place_id)
 #
 class Event < ApplicationRecord
   
   validates :title, presence:  true 
-
-  belongs_to :place
-
+  has_many :places, inverse_of: :event
+  accepts_nested_attributes_for :places, allow_destroy: true
 =begin
   SELECT  "activities".*
     FROM "activities"

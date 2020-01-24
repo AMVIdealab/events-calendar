@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_14_162411) do
+ActiveRecord::Schema.define(version: 2020_01_23_110754) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "city"
+    t.string "street_address"
+    t.string "zip_code"
+    t.string "state"
+    t.string "nation"
+    t.integer "place_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_addresses_on_place_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -19,14 +31,15 @@ ActiveRecord::Schema.define(version: 2020_01_14_162411) do
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "place_id"
-    t.index ["place_id"], name: "index_events_on_place_id"
   end
 
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_places_on_event_id"
   end
 
+  add_foreign_key "addresses", "places"
 end
