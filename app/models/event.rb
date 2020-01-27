@@ -13,8 +13,12 @@
 class Event < ApplicationRecord
   
   validates :title, presence:  true 
+  has_rich_text :description
+  
   has_many :places, inverse_of: :event
   accepts_nested_attributes_for :places, allow_destroy: true
+
+
 =begin
   SELECT  "activities".*
     FROM "activities"
