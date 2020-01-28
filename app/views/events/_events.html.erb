@@ -24,12 +24,13 @@
       <th>End Date</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% events.each do |event|%>
       <tr>
-        <td><%=link_to event.title, event_path(event)%></td>
+        <td><%=link_to event.name, event_path(event)%></td>
         <td><%= event.description%></td>
         <%if event.places.first.present?%>
           <td>
@@ -44,6 +45,7 @@
         <td><%= event.end_date%></td>
         <td><%= link_to 'Edit', edit_event_path(event)%></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <td><%= link_to 'Api', api_v1_event_path(event), target: "_blank"%></td>
       </tr>
     <%end%>
   </tbody>

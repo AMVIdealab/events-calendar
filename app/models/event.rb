@@ -5,14 +5,14 @@
 #  id          :integer          not null, primary key
 #  description :text
 #  end_date    :datetime
+#  name        :string
 #  start_date  :datetime
-#  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 class Event < ApplicationRecord
   
-  validates :title, presence:  true 
+  validates :name, presence:  true 
   has_rich_text :description
   
   has_many :places, inverse_of: :event
