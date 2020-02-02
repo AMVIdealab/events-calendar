@@ -18,6 +18,8 @@ class Event < ApplicationRecord
   has_many :places, inverse_of: :event
   accepts_nested_attributes_for :places, allow_destroy: true
 
+  has_many :event_categories
+  has_many :categories, through: :event_categories
 
 =begin
   SELECT  "activities".*

@@ -8,5 +8,4 @@ class Api::V1::PlacesController < ApplicationController
     @place = Place.find(params[:id])
     render json: PlaceSerializer.new(@place).serialized_json
   end
-
 end
