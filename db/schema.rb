@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_01_31_103333) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
     t.string "record_type", null: false
-    t.integer "record_id", null: false
+    t.bigint "record_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
@@ -25,8 +28,8 @@ ActiveRecord::Schema.define(version: 2020_01_31_103333) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_01_31_103333) do
     t.string "zip_code"
     t.string "state"
     t.string "nation"
-    t.integer "place_id", null: false
+    t.bigint "place_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["place_id"], name: "index_addresses_on_place_id"
@@ -68,8 +71,8 @@ ActiveRecord::Schema.define(version: 2020_01_31_103333) do
   end
 
   create_table "event_categories", force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "category_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_event_categories_on_category_id"

@@ -2,7 +2,7 @@
 #
 # Table name: events
 #
-#  id          :integer          not null, primary key
+#  id          :bigint           not null, primary key
 #  description :text
 #  end_date    :datetime
 #  name        :string
@@ -20,6 +20,25 @@ class Event < ApplicationRecord
 
   has_many :event_categories
   has_many :categories, through: :event_categories
+  
+  scope :filter_by_name, lambda {|keyword| where('lower(name) LIKE ?', "%#{keyword.downcase}%")}
+
+
+  #scope :filter_by_city, lambda { |city| Event.joins(places: :address).where(addresses: {city:  "#{city.capitalize}"})}
+  #Set defaul_scoped or unscoped
+  #Utilizzando unscoped sono sicuro di prendere tutti gli eventi anche quelli che hanno un default scope
+  scope :filter_by_city, lambda { |city| Event.unscoped.joins(places: :address).where('lower(city) LIKE ?', "%#{city.downcase}%")}
+
+
+  def self.search(params = {})
+    events = params[:events_ids].present? ? Events.find(params[:event_ids]) : Event.all
+    events = events.filter_by_name(params[:keyword]) if params[:keyword]
+    events = events.filter_by_city(params[:city]) if params[:city]
+  
+    events
+  end
+  
+
 
 =begin
   SELECT  "activities".*

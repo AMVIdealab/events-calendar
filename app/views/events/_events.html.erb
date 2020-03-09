@@ -18,8 +18,9 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
+      <!--<th>Description</th>-->
       <th>Place</th>
+      <th>City</th>
       <th>Start Date</th>
       <th>End Date</th>
       <th></th>
@@ -31,14 +32,18 @@
     <% events.each do |event|%>
       <tr>
         <td><%=link_to event.name, event_path(event)%></td>
-        <td><%= event.description%></td>
+        <!--  <td><#%= event.description%></td>-->
         <%if event.places.first.present?%>
-          <td>
           <%event.places.each do |place|%>
+          <td>
             <%= link_to place.name, place_path(place)%>
-          <%end%>
           </td>
+          <td>
+            <%= link_to place.address.city, eventi_path(place.address.city)%> 
+          </td>
+        <%end%>
         <%else%>
+          <td> - </td>
           <td> - </td>
         <%end%>
         <td><%= event.start_date%></td>

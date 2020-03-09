@@ -1,0 +1,10 @@
+<%if @events.first.present?%>
+  <%= render partial: 'events', locals: {events: @events} %>
+  <br>
+  <%= link_to 'Back', events_path%>
+<%else%>
+  <h4>Non ci sono eventi presenti</h4>
+  <%= link_to "New event", new_event_path%>
+<%end%>
+<br>
+<!--<#%= link_to "New event", new_event_path%>-->

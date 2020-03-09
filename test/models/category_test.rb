@@ -2,7 +2,7 @@
 #
 # Table name: categories
 #
-#  id             :integer          not null, primary key
+#  id             :bigint           not null, primary key
 #  children_count :integer          default(0), not null
 #  depth          :integer          default(0), not null
 #  lft            :integer          not null

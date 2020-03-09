@@ -40,6 +40,10 @@ class EventsController < ApplicationController
     @events = Event.today
   end
 
+  def city_events
+    @events = Event.filter_by_city(params[:city])
+  end
+
 
   def show
     @event = Event.find(params[:id]) 
